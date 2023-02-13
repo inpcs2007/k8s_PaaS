@@ -488,11 +488,6 @@ certs]# cat ca.pem
 ~]# yum install docker-ce-18.09.8 docker-ce-cli-18.09.8 containerd.io -y
 #out：...Complete!
 
-
-
-
-
-
 # 上面的下载可能网络有问题，需要多试几次，这些部署我已经不同机器试过很多次了
 ~]# mkdir -p /data/docker /etc/docker
 # # 注意，172.7.21.1，这里得21是指在hdss7-21得机器，如果是22得机器，就是172.7.22.1，共一处需要改机器名："bip": "172.7.21.1/24"
