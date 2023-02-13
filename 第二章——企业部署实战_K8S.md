@@ -187,7 +187,7 @@
 
 ~~~
 # 查看enforce是否关闭，确保disabled状态，当然可能没有这个命令
-~]# getforce
+~]# getenforce 
 # 查看内核版本，确保在3.8以上版本
 ~]# uname -a
 # 关闭firewalld
@@ -474,10 +474,25 @@ certs]# cat ca.pem
 > **WHAT**：是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。
 >
 > **WHY**：Pod里面就是由数个docker容器组成，Pod是豌豆荚，docker容器是里面的豆子。
+> 
+> **WHY**：对应的docker版本为18.09.8
 
 ~~~
 # 如我们架构图所示，运算节点是21/22机器（没有docker则无法运行pod），运维主机是200机器（没有docker则没办法下载docker存入私有仓库），所以在三台机器安装（21/22/200）
-~]# curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+# 安装docker准备工作可以参考第一章——Docker（
+# 安装docker包
+~]# yum list docker --show-duplicates
+~]# yum install -y yum-utils
+~]# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+~]# yum list docker-ce --show-duplicates
+~]# yum install docker-ce-18.09.8 docker-ce-cli-18.09.8 containerd.io -y
+#out：...Complete!
+
+
+
+
+
+
 # 上面的下载可能网络有问题，需要多试几次，这些部署我已经不同机器试过很多次了
 ~]# mkdir -p /data/docker /etc/docker
 # # 注意，172.7.21.1，这里得21是指在hdss7-21得机器，如果是22得机器，就是172.7.22.1，共一处需要改机器名："bip": "172.7.21.1/24"
