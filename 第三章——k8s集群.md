@@ -18,7 +18,6 @@
 ~~~
 # 任意机器(我是在21)
 ~]# kubectl get all [-n default]
-~]# kubectl create ns app
 # 增
 ~]# kubectl create ns app
 # 删
